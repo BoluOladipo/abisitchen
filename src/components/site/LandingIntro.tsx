@@ -21,7 +21,7 @@ export function LandingIntro() {
     }
     if (phase !== "intro") return;
 
-    const timer = window.setTimeout(() => setPhase("exiting"), 1_200);
+    const timer = window.setTimeout(() => setPhase("exiting"), 5_000);
     return () => window.clearTimeout(timer);
   }, [phase]);
 

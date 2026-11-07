@@ -14,6 +14,7 @@ import water from "@/assets/water.jpg";
 import malt from "@/assets/malta guiness.jpg";
 import supermalt from "@/assets/supermalt.jpg";
 import egusiSoup from "@/assets/egusi soup & pounded yam.jpg";
+import brandMark from "@/assets/brand-mark.jpg";
 
 export const FOOD_IMAGE: Record<string, string> = {
   "Smokey Jollof Rice": jollof,
@@ -42,7 +43,16 @@ export const FOOD_IMAGE: Record<string, string> = {
 };
 
 export function imageFor(name: string, fallback?: string | null): string {
-  return fallback || FOOD_IMAGE[name] || jollof;
+  const normalizedName = name.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const mappedImage = Object.entries(FOOD_IMAGE).find(
+    ([foodName]) => foodName.toLowerCase().replace(/[^a-z0-9]/g, "") === normalizedName,
+  )?.[1];
+
+  if (normalizedName.startsWith("bottledwater") || normalizedName.startsWith("bottlewater")) {
+    return water;
+  }
+
+  return mappedImage ?? fallback ?? brandMark;
 }
 
 export const CATEGORY_ORDER = [
