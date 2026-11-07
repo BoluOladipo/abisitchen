@@ -3,13 +3,15 @@ import friedRice from "@/assets/fried rice.jpg";
 import whiteRice from "@/assets/r&s.jpg";
 import plantain from "@/assets/plantain.jpg";
 import puffpuff from "@/assets/food-puffpuff.jpg";
+import chocolatePuffpuff from "@/assets/menu-chocolate-puffpuff.jpg";
 import meatpie from "@/assets/meat pie.jpg";
-import mackerel from "@/assets/makerel.jpg";
-import pepperChicken from "@/assets/chicken.jpg";
-import pepperTurkey from "@/assets/turkey.jpg";
+import friedBeef from "@/assets/menu-beef.webp";
+import mackerel from "@/assets/menu-mackerel.webp";
+import pepperChicken from "@/assets/menu-pepper-chicken.webp";
+import pepperTurkey from "@/assets/menu-pepper-turkey.webp";
 import coke from "@/assets/coke2.jpeg";
 import fanta from "@/assets/fanta2.jpg";
-import water from "@/assets/water.jpg";
+import water from "@/assets/menu-bottled-water.webp";
 import malt from "@/assets/malta guiness.jpg";
 import egusiSoup from "@/assets/egusi soup & pounded yam.jpg";
 import brandMark from "@/assets/brand-mark.jpg";
@@ -22,10 +24,10 @@ export const FOOD_IMAGE: Record<string, string> = {
   "Fried Yam & Sauce": brandMark,
   "Plantain (3pcs)": plantain,
   "Puff-puff (4pcs)": puffpuff,
-  "Chocolate Puff-puff (4pcs)": brandMark,
-  "Cookies + Milk Chocolate Puff-Puff": brandMark,
+  "Chocolate Puff-puff (4pcs)": chocolatePuffpuff,
+  "Cookies + Milk Chocolate Puff-Puff": chocolatePuffpuff,
   "Meat Pie": meatpie,
-  "Fried Beef": brandMark,
+  "Fried Beef": friedBeef,
   "Goat Meat": brandMark,
   "Egusi Soup & Pounded Yam": egusiSoup,
   Fish: mackerel,

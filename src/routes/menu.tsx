@@ -31,11 +31,11 @@ export const Route = createFileRoute("/menu")({
 });
 
 function MenuPage() {
-  const { data: foods = [], isLoading } = useQuery(foodsQueryOptions());
+  const { data: foods = [], isError, isLoading } = useQuery(foodsQueryOptions());
 
   const categories = useMemo(() => {
     const set = new Set<string>(foods.map((f) => f.category));
-    const known = [...CATEGORY_ORDER];
+    const known = CATEGORY_ORDER.filter((category) => set.has(category));
     const extra = [...set].filter((c) => !(CATEGORY_ORDER as readonly string[]).includes(c));
     return ["All", ...known, ...extra];
   }, [foods]);
@@ -144,9 +144,13 @@ function MenuPage() {
               </article>
             ))}
           </div>
+        ) : isError ? (
+          <div className="text-center py-20 text-muted-foreground" role="alert">
+            The menu could not be loaded. Please try again later.
+          </div>
         ) : shown.length === 0 ? (
           <div className="text-center py-20 text-muted-foreground">
-            No items in this category yet.
+            The menu is being updated. Please check back soon.
           </div>
         ) : (
           <div className="space-y-12">
