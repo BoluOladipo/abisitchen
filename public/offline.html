@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#641b2b" />
+    <title>You're offline — Abi's Kitchen</title>
+    <style>
+      body {
+        display: grid;
+        min-height: 100vh;
+        margin: 0;
+        place-items: center;
+        background: #fffaf4;
+        color: #451421;
+        font: 16px/1.5 system-ui, sans-serif;
+        text-align: center;
+      }
+      main { max-width: 28rem; padding: 2rem; }
+      h1 { font-family: Georgia, serif; }
+      button {
+        border: 0;
+        border-radius: 999px;
+        padding: 0.75rem 1.25rem;
+        background: #641b2b;
+        color: white;
+        font: inherit;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>You're offline</h1>
+      <p>Reconnect to the internet to browse the Abi's Kitchen menu and place an order.</p>
+      <button onclick="location.reload()">Try again</button>
+    </main>
+  </body>
+</html>

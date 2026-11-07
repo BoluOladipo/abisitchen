@@ -4,9 +4,9 @@ import { useMemo, useState } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { FoodCard } from "@/components/site/FoodCard";
 import { Reveal } from "@/components/site/Reveal";
-import { supabase } from "@/integrations/supabase/client";
 import type { Food } from "@/lib/foods";
-import { CATEGORY_ORDER, sortFoodsByMenuOrder } from "@/lib/foods";
+import { CATEGORY_ORDER } from "@/lib/foods";
+import { foodsQueryOptions } from "@/lib/foodQueries";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/menu")({
@@ -22,14 +22,7 @@ export const Route = createFileRoute("/menu")({
 });
 
 function MenuPage() {
-  const { data: foods = [], isLoading } = useQuery({
-    queryKey: ["foods"],
-    queryFn: async () => {
-      const { data, error } = await supabase.from("foods").select("*").order("sort_order");
-      if (error) throw error;
-      return sortFoodsByMenuOrder(data as Food[]);
-    },
-  });
+  const { data: foods = [], isLoading } = useQuery(foodsQueryOptions());
 
   const categories = useMemo(() => {
     const set = new Set<string>(foods.map(f => f.category));

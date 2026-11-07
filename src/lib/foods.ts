@@ -42,7 +42,7 @@ export const FOOD_IMAGE: Record<string, string> = {
 };
 
 export function imageFor(name: string, fallback?: string | null): string {
-  return FOOD_IMAGE[name] ?? fallback ?? jollof;
+  return fallback || FOOD_IMAGE[name] || jollof;
 }
 
 export const CATEGORY_ORDER = [

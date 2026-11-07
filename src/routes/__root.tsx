@@ -13,6 +13,13 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "sonner";
 import { CartProvider } from "@/lib/cart";
+import { InstallAppPrompt } from "@/components/site/InstallAppPrompt";
+import { getRequestUrl } from "@tanstack/react-start/server";
+import { createIsomorphicFn } from "@tanstack/react-start";
+
+const getCurrentPageUrl = createIsomorphicFn()
+  .client(() => window.location.href)
+  .server(() => getRequestUrl({ xForwardedHost: true }).href);
 
 function NotFoundComponent() {
   return (
@@ -75,37 +82,50 @@ function ErrorComponent({ error, reset }: { error: unknown; reset: () => void })
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Abi's Kitchen — Nigerian Takeaway · Pre-order & Pickup" },
-      { name: "description", content: "Authentic Nigerian jollof, fried rice, peppered chicken and more. Pre-order online for fast pickup in the UK." },
-      { name: "author", content: "Abi's Kitchen" },
-      { property: "og:title", content: "Abi's Kitchen — Nigerian Takeaway" },
-      { property: "og:description", content: "Where every bite tells a story. Pre-order ahead, pay at pickup." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      {
-    rel: "icon",
-    type: "image/png",
-    href: "/favicon.png",
+  head: () => {
+    const pageUrl = getCurrentPageUrl();
+    const shareImageUrl = new URL("/share-card.jpg", pageUrl).href;
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { title: "Abi's Kitchen — Nigerian Takeaway · Pre-order & Pickup" },
+        { name: "description", content: "Authentic Nigerian jollof, fried rice, peppered chicken and more. Pre-order online for fast pickup in the UK." },
+        { name: "author", content: "Abi's Kitchen" },
+        { property: "og:title", content: "Abi's Kitchen — Nigerian Takeaway" },
+        { property: "og:description", content: "Where every bite tells a story. Pre-order ahead, pay at pickup." },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: pageUrl },
+        { property: "og:site_name", content: "Abi's Kitchen" },
+        { property: "og:locale", content: "en_GB" },
+        { property: "og:image", content: shareImageUrl },
+        { property: "og:image:secure_url", content: shareImageUrl },
+        { property: "og:image:type", content: "image/jpeg" },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { property: "og:image:alt", content: "Abi's Kitchen — authentic Nigerian takeaway" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "Abi's Kitchen — Nigerian Takeaway" },
+        { name: "twitter:description", content: "Where every bite tells a story. Pre-order ahead, pay at pickup." },
+        { name: "twitter:image", content: shareImageUrl },
+        { name: "theme-color", content: "#641b2b" },
+        { name: "apple-mobile-web-app-capable", content: "yes" },
+        { name: "apple-mobile-web-app-title", content: "Abi's Kitchen" },
+      ],
+      links: [
+        { rel: "stylesheet", href: appCss },
+        { rel: "icon", type: "image/png", href: "/favicon.png" },
+        { rel: "manifest", href: "/manifest.webmanifest" },
+        { rel: "apple-touch-icon", href: "/icons/icon-192.png" },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap",
+        },
+      ],
+    };
   },
- 
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap",
-      },
-    ],
-  }),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -133,6 +153,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <CartProvider>
         <Outlet />
+        <InstallAppPrompt />
         <Toaster position="top-center" richColors />
       </CartProvider>
     </QueryClientProvider>

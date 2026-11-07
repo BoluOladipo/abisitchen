@@ -7,8 +7,8 @@ import { FoodCard } from "@/components/site/FoodCard";
 import { Reveal } from "@/components/site/Reveal";
 import { LandingIntro } from "@/components/site/LandingIntro";
 import { DishOrbitHero } from "@/components/site/DishOrbitHero";
-import { supabase } from "@/integrations/supabase/client";
 import type { Food } from "@/lib/foods";
+import { foodsQueryOptions } from "@/lib/foodQueries";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,18 +23,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const { data: foods = [] } = useQuery({
-    queryKey: ["foods", "featured"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("foods")
-        .select("*")
-        .eq("is_available", true)
-        .order("sort_order");
-      if (error) throw error;
-      return data as Food[];
-    },
-  });
+  const { data: allFoods = [] } = useQuery(foodsQueryOptions());
+  const foods = allFoods.filter(food => food.is_available);
 
   const featured = [
     foods.find(f => f.name === "Smokey Jollof Rice"),
