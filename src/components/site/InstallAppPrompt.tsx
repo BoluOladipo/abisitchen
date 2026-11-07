@@ -20,8 +20,14 @@ export function InstallAppPrompt() {
   const [installing, setInstalling] = useState(false);
 
   useEffect(() => {
-    setIsIOS(/iphone|ipad|ipod/i.test(navigator.userAgent));
-    setIsInstalled(window.matchMedia("(display-mode: standalone)").matches);
+    const isIOSDevice =
+      /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    setIsIOS(isIOSDevice);
+    setIsInstalled(
+      window.matchMedia("(display-mode: standalone)").matches ||
+        (isIOSDevice && "standalone" in navigator && navigator.standalone === true),
+    );
 
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/sw.js").catch((error) => {
@@ -74,7 +80,7 @@ export function InstallAppPrompt() {
         <div className="min-w-0 flex-1">
           <div className="font-display text-lg">Install Abi's Kitchen</div>
           <p className="mt-1 text-sm text-muted-foreground">
-            Add the app to your home screen for quick access to the menu and ordering.
+            Install the app for quick access to the menu and ordering.
           </p>
         </div>
         <button
@@ -99,7 +105,7 @@ export function InstallAppPrompt() {
         disabled={installing}
         className="mt-3 inline-flex w-full items-center justify-center rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 disabled:opacity-60"
       >
-        {installing ? "Opening install…" : installEvent ? "Install app" : "How to install"}
+        {installing ? "Opening install…" : "Install"}
       </button>
     </aside>
   );
