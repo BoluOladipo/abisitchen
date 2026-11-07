@@ -12,34 +12,39 @@ import pepperTurkey from "@/assets/menu-pepper-turkey.webp";
 import coke from "@/assets/coke2.jpeg";
 import fanta from "@/assets/fanta2.jpg";
 import water from "@/assets/menu-bottled-water.webp";
+import ayamase from "@/assets/menu-ayamase-white-rice.webp";
+import friedYamSauce from "@/assets/menu-fried-yam-sauce.webp";
+import goatMeat from "@/assets/menu-goat-meat.webp";
 import malt from "@/assets/malta guiness.jpg";
+import maltina from "@/assets/menu-maltina.webp";
 import egusiSoup from "@/assets/egusi soup & pounded yam.jpg";
+import spicyChiliAsun from "@/assets/menu-spicy-chili-asun.webp";
 import brandMark from "@/assets/brand-mark.jpg";
 
 export const FOOD_IMAGE: Record<string, string> = {
   "Smokey Jollof Rice": jollof,
   "Fried Rice": friedRice,
   "White Rice & Stew": whiteRice,
-  "Ayamase & White Rice": brandMark,
-  "Fried Yam & Sauce": brandMark,
+  "Ayamase & White Rice": ayamase,
+  "Fried Yam & Sauce": friedYamSauce,
   "Plantain (3pcs)": plantain,
   "Puff-puff (4pcs)": puffpuff,
   "Chocolate Puff-puff (4pcs)": chocolatePuffpuff,
   "Cookies + Milk Chocolate Puff-Puff": chocolatePuffpuff,
   "Meat Pie": meatpie,
   "Fried Beef": friedBeef,
-  "Goat Meat": brandMark,
+  "Goat Meat": goatMeat,
   "Egusi Soup & Pounded Yam": egusiSoup,
   Fish: mackerel,
   "Peppered Chicken": pepperChicken,
   "Peppered Turkey": pepperTurkey,
-  "Spicy Chili Asun": brandMark,
+  "Spicy Chili Asun": spicyChiliAsun,
   "Nigerian Coke": coke,
   "Nigerian Fanta": fanta,
   "Bottled Water — Small": water,
   "Bottled Water — Large": water,
   "Malta Guinness": malt,
-  Maltina: brandMark,
+  Maltina: maltina,
 };
 
 function normalizeFoodName(name: string): string {
