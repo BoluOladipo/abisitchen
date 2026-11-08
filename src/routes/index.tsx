@@ -59,7 +59,7 @@ function Index() {
       <section className="bg-muted/40 border-y border-border">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="text-xs uppercase tracking-[0.2em] text-primary">Why Abi's</div>
+            <div className="text-xs uppercase tracking-[0.2em] text-primary">Why Abis</div>
             <h2 className="mt-2 font-display text-3xl sm:text-4xl">Cooked with care, ready with speed</h2>
           </div>
           <Reveal className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal-stagger">
