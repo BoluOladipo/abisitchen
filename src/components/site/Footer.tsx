@@ -35,7 +35,7 @@ export function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-background/60">
-          <div>© {new Date().getFullYear()} Abi's Kitchen. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} Abis Kitchen. All rights reserved.</div>
           <Link to="/auth" className="hover:text-primary">Admin login</Link>
 
 
