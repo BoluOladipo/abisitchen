@@ -78,7 +78,7 @@ export function InstallAppPrompt() {
           <Download className="size-5" />
         </div>
         <div className="min-w-0 flex-1">
-          <div className="font-display text-lg">Install Abi's Kitchen</div>
+          <div className="font-display text-lg">Install Abis Kitchen</div>
           <p className="mt-1 text-sm text-muted-foreground">
             Install the app for quick access to the menu and ordering.
           </p>
