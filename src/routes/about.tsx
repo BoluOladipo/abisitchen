@@ -31,7 +31,7 @@ function AboutPage() {
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16 grid lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-5 text-foreground/85">
           <p className="text-lg">
-            Abi's Kitchen began with a simple belief — food should feel like home, no matter where you are.
+            Abis Kitchen began with a simple belief — food should feel like home, no matter where you are.
             Every dish we serve carries the warmth of family Sunday lunches, the rhythm of a busy Lagos market,
             and the care of recipes passed down through generations.
           </p>
