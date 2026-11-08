@@ -89,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       meta: [
         { charSet: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { title: "Abi's Kitchen — Nigerian Takeaway · Pre-order & Pickup" },
+        { title: "Abis Kitchen — Nigerian Takeaway · Pre-order & Pickup" },
         { name: "description", content: "Authentic Nigerian jollof, fried rice, peppered chicken and more. Pre-order online for fast pickup in the UK." },
         { name: "author", content: "Abi's Kitchen" },
         { property: "og:title", content: "Abi's Kitchen — Nigerian Takeaway" },
