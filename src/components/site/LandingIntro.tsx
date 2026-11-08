@@ -55,7 +55,7 @@ export function LandingIntro() {
         <div className="intro-brand">
           <img src={logo} alt="" />
           <div>
-            <div className="intro-wordmark">Abi's Kitchen</div>
+            <div className="intro-wordmark">Abis Kitchen</div>
             <div className="intro-tagline">A taste of home, cooked daily.</div>
           </div>
         </div>
